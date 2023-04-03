@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package proto;
+option java_package = "com.javarpc.spring.grpc.proto";
+option java_multiple_files = true;
+
+message Identity{
+    string id = 1;
+}
+
+message Product {
+    string id = 1;
+    string name = 2;
+    double price = 3;
+}
+
+message ProductRequest{
+    string id = 1;
+}
+service ProductService{
+    rpc getProduct(ProductRequest) returns (Product);
+    rpc listenProductStream (Identity) returns (stream Product);
+    rpc streamProduct (Identity) returns (stream Product);
+}
+
+//protoc --dart_out=grpc:generated -Iprotos protos/product_service.proto
+
+        //export PATH="/Users/fendriknicholas/Library/Android/sdk/bin"
