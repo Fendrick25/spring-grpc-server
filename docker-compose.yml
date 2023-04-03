@@ -3,3 +3,5 @@ services:
   spring-grpc-server-1:
     image: spring-grpc-server:latest
     container_name: spring-grpc-server-1
+    ports:
+      - "50052:50052"
